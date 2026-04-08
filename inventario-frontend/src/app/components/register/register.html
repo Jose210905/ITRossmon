@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card">
+    <h2>Registrarse</h2>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="mensaje" class="success">{{ mensaje }}</div>
+    <input type="text" placeholder="Usuario" [(ngModel)]="username" />
+    <input type="password" placeholder="Contraseña" [(ngModel)]="password" />
+    <button (click)="register()">Registrarse</button>
+    <p>¿Ya tenés cuenta? <a routerLink="/login">Iniciá sesión</a></p>
+  </div>
+</div>

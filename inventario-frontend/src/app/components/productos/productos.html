@@ -1,0 +1,49 @@
+<p>productos works!</<div class="container">
+  <h2>Gestión de Productos</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="mensaje" class="success">{{ mensaje }}</div>
+
+  <button (click)="abrirFormulario()">+ Nuevo Producto</button>
+
+  <div *ngIf="mostrarFormulario" class="card">
+    <h3>{{ editando ? 'Editar' : 'Nuevo' }} Producto</h3>
+    <input type="text" placeholder="Nombre" [(ngModel)]="form.nombre" />
+    <input type="text" placeholder="Descripción" [(ngModel)]="form.descripcion" />
+    <input type="number" placeholder="Precio" [(ngModel)]="form.precio" />
+    <input type="number" placeholder="Stock" [(ngModel)]="form.stock" />
+    <select [(ngModel)]="form.categoriaId">
+      <option value="0">-- Seleccioná una categoría --</option>
+      <option *ngFor="let c of categorias" [value]="c.id">{{ c.nombre }}</option>
+    </select>
+    <div class="botones">
+      <button (click)="guardar()">Guardar</button>
+      <button (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of productos">
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.descripcion }}</td>
+        <td>₡{{ p.precio }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.categoriaNombre }}</td>
+        <td>
+          <button (click)="editar(p)">Editar</button>
+          <button (click)="eliminar(p.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

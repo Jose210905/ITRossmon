@@ -1,0 +1,8 @@
+<nav class="navbar" *ngIf="estaAutenticado()">
+  <span class="brand">🏪 Inventario IT Rossmon</span>
+  <div class="links">
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/categorias">Categorías</a>
+    <button (click)="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+</nav>

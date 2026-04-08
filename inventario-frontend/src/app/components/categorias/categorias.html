@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Gestión de Categorías</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="mensaje" class="success">{{ mensaje }}</div>
+
+  <button (click)="abrirFormulario()">+ Nueva Categoría</button>
+
+  <div *ngIf="mostrarFormulario" class="card">
+    <h3>Nueva Categoría</h3>
+    <input type="text" placeholder="Nombre" [(ngModel)]="form.nombre" />
+    <input type="text" placeholder="Descripción" [(ngModel)]="form.descripcion" />
+    <div class="botones">
+      <button (click)="guardar()">Guardar</button>
+      <button (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categorias">
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.descripcion }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
